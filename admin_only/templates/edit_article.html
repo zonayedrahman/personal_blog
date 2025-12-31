@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if article %}
+<h2>Edit Article: {{ article.title }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" value="{{ article.title }}"><br><br>
+
+    <label for="content">Content:</label><br>
+    <textarea id="content" name="content" rows="10" cols="50">{{ article.content }}</textarea><br><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+{% else %}
+<p>Article not found.</p>
+{% endif %}
+
+{% endblock %}

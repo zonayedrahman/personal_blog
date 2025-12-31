@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Articles</h2>
+
+{% for article in articles %}
+<div>
+    <p>
+        <strong>#</strong> {{ article.id }}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'article_detail' article.id %}">
+            {{ article.title }}
+        </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        {{ article.published_date }}
+    </p>
+    <hr>
+</div>
+{% empty %}
+<p>No articles yet.</p>
+{% endfor %}
+
+{% endblock %}
